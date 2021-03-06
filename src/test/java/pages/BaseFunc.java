@@ -2,6 +2,8 @@ package pages;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,7 +19,7 @@ public class BaseFunc {
     private WebDriverWait wait;
 
 
-    public BaseFunc(){
+    public BaseFunc() {
         LOGGER.info("Setting webdriver path");
         System.setProperty("webdriver.chrome.driver", "/Users/ada/Downloads/chromedriver");
 
@@ -28,23 +30,40 @@ public class BaseFunc {
         wait = new WebDriverWait(driver, 10);
     }
 
-    public void openUrl(String url){
+    public void openUrl(String url) {
         LOGGER.info("Opening " + url + "web page");
         driver.get(url);
     }
-    public void click (By locator){
+
+    public void click(By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator));
         driver.findElement(locator).click();
     }
-    public void click(WebElement webElement){
+
+    public void click(WebElement webElement) {
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
 
     }
-    public List<WebElement> findElements(By locator){
+
+    public List<WebElement> findElements(By locator) {
         LOGGER.info("Getting all elements by: " + locator);
         return driver.findElements(locator);
 
     }
 
+    public WebElement findElement(By locator) {
+        LOGGER.info("Trying to find element by locator: " + locator);
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        return driver.findElement(locator);
+    }
+
+    public String getText(By locator) {
+        LOGGER.info("getting text of element by locator: " + locator);
+        return driver.findElement(locator).getText();
+    }
+
+    public void closeTvNetPage() {
+        driver.quit();
+    }
 }
