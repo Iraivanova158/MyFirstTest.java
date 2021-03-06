@@ -21,7 +21,6 @@ public class ArticlePage {
     public String getTitle (){
         LOGGER.info("Getting article title"  + baseFunc.getText(ARTICLE_TITLE));
         return baseFunc.getText(ARTICLE_TITLE);
-
     }
     public int getArticleCommentCount(){
         int comCount = 0;
