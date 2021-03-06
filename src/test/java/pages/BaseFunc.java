@@ -63,7 +63,16 @@ public class BaseFunc {
         return driver.findElement(locator).getText();
     }
 
-    public void closeTvNetPage() {
-        driver.quit();
+    public String getText(By locator, int id) {
+        LOGGER.info("getting text of element Nr: " + id + "by locator:" + locator);
+        List<WebElement> elements = findElements(locator);
+
+        Assertions.assertFalse(elements.isEmpty(), "Element list is empty");
+        Assertions.assertTrue(elements.size() > id, "There are less than " + id + 1 + "elements");
+        return elements.get(id).getText();
     }
+
+        public void closeTvNetPage() {
+            driver.quit();
+        }
 }

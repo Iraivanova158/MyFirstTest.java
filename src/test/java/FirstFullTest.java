@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class FirstFullTest {
     private final By ARTICLE = By.tagName("article");
     private final By TITLE = By.xpath (".//span[@itemprop = 'headline name']");
-    private final By COMMENT_COUNT = By.xpath(".//span[contains(@class, 'article__comment')]");
+    private final By COMMENT_COUNT = By.xpath(".//span[contains(@class, '__comment')]");
 
     private final By ARTICLE_PAGE_TITLE = By.xpath(".//h1[@itemprop = 'headline name']");
 

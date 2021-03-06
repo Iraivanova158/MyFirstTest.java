@@ -24,15 +24,14 @@ public class HomePage {
 
     public void acceptCookies() {
         baseFunc.click(ACCEPT_BTN);
-    }
 
+    }
     public String getArticleTitleById(int id) {
         articleToClick = baseFunc.findElements(ARTICLE).get(id);
         LOGGER.info("Getting article title from home page: " + articleToClick.findElement(TITLE).getText());
         return articleToClick.findElement(TITLE).getText();
 
     }
-
     public int getCommentCountById() {
         int commentCount = 0;
 
@@ -43,11 +42,12 @@ public class HomePage {
             LOGGER.info("Comments count: " + commentCount);
         }
         return commentCount;
-    }
 
+    }
     public ArticlePage openArticle() {
         LOGGER.info("Opening new page");
         baseFunc.click(articleToClick);
         return new ArticlePage(baseFunc);
     }
+
 }
